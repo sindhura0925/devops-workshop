@@ -6,7 +6,8 @@ region  = "us-east-1"
   ami           = "ami-0bb4c991fa89d4b9b"
   instance_type = "t2.micro"
   key_name       = "dpp"
-  security_groups = [demo-sg]
+  //security_groups = [demo-sg]
+  vpc_security_group_ids = [aws_security_group.demo-sg.id]
   subnet_id = aws_subnet.dpp-public-subnet-01.id
  }
 
@@ -88,12 +89,12 @@ resource "aws_route_table" "dpp-public-rt" {
 // Associate subnet with route table
 
 resource "aws_route_table_association" "dpp-rta-public-subnet-01" {
-    subnet_id = aws_subnet.dpp-public_subnet_01.id
+    subnet_id = aws_subnet.dpp-public-subnet-01.id
     route_table_id = aws_route_table.dpp-public-rt.id
 }
 
 resource "aws_route_table_association" "dpp-rta-public-subnet-02" {
-    subnet_id = aws_subnet.dpp-public_subnet_02.id
+    subnet_id = aws_subnet.dpp-public-subnet-02.id
     route_table_id = aws_route_table.dpp-public-rt.id
 }
 
