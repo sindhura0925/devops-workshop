@@ -111,5 +111,6 @@ resource "aws_route_table_association" "dpp-rta-public-subnet-02" {
     route_table_id = aws_route_table.dpp-public-rt.id
 }
 
+
  
 
